@@ -10,4 +10,8 @@ public class SampleController {
     public String sample() {
         return "sample";
     }
+    @RequestMapping("/sample2")
+    public String sample2() {
+        return "sample";
+    }
 }
