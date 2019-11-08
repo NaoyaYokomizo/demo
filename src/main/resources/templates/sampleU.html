@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sample</title>
+</head>
+
+<body>
+    <h1>HelloWorld</h1>
+    <h1>demo 権限User</h1>
+    
+<div th:fragment="logout" sec:authorize="isAuthenticated()">
+    <p>Login as: <span sec:authentication="name"></span> <span sec:authentication="principal.authorities"></span></p>
+    <form action="#" th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</div>
+
+</body>
+
+</html>

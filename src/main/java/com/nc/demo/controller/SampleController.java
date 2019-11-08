@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SampleController {
 
-    @RequestMapping("/sample")
-    public String sample() {
-        return "sample";
+    @RequestMapping("/sampleA")
+    public String sampleA() {
+        return "sampleA";
     }
 
-    @RequestMapping("/sample2")
-    public String sample2() {
-        return "sample";
+    @RequestMapping("/sampleU")
+    public String sampleU() {
+        return "sampleU";
     }
 }
