@@ -7,6 +7,7 @@
     <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
     <script src='fullcalendar/core/main.js'></script>
     <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/interaction/main.js'></script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             locale: 'ja',
-            plugins: ['dayGrid', 'timeGrid', 'list'],
+            plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
             header: {
                 left: 'today month,basicWeek',
                 center: 'title',
@@ -43,12 +44,6 @@
             //events: "events.json",
             events: "/fullcalendar-events",
             eventClick: function (info) {
-                alert('Event: ' + info.event.title);
-                alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                alert('View: ' + info.view.type);
-
-                // change the border color just for fun
-                info.el.style.borderColor = 'red';
             }
         });
         calendar.render();
