@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<meta name="viewport" content="width=device-width">
+<link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+<link href='fullcalendar/packages-premium/timeline/main.css' rel='stylesheet' />
+<link href='fullcalendar/packages-premium/resource-timeline/main.css' rel='stylesheet' />
+<script src='fullcalendar/packages/core/main.js'></script>
+<script src='fullcalendar/packages/interaction/main.js'></script>
+<script src='fullcalendar/packages-premium/timeline/main.js'></script>
+<script src='fullcalendar/packages-premium/resource-common/main.js'></script>
+<script src='fullcalendar/packages-premium/resource-timeline/main.js'></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+      locale: 'ja',
+      plugins: [ 'interaction', 'resourceTimeline' ],
+      now: '2019-11-25',
+      editable: true,
+      height: window.innerHeight - 100,
+      aspectRatio: 1.8,
+      scrollTime: '00:00',
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'resourceTimelineDay,resourceTimelineMonth'
+      },
+        //ボタンのテキストを書き換えます
+      buttonText: {
+        resourceTimelineMonth: "月表示"
+      },
+      defaultView: 'resourceTimelineDay',
+      views: {
+        resourceTimelineDay: {
+          buttonText: '日表示',
+          slotDuration: '00:30'
+        }
+      },
+      navLinks: true,
+      resourceAreaWidth: '28%',
+      resourceLabelText: '会議室',
+      resources: [
+        { id: 'a', title: '会議室 A' },
+        { id: 'b', title: '会議室 B', eventColor: 'green' },
+        { id: 'c', title: '会議室 C', eventColor: 'orange' },
+        { id: 'd', title: '会議室 D' },
+        { id: 'e', title: '会議室 E' },
+        { id: 'f', title: '会議室 F', eventColor: 'red' },
+        { id: 'k', title: '大会議室' , children: [
+          { id: 'k1', title: 'スペース1' },
+          { id: 'k2', title: 'スペース2' },
+          { id: 'k3', title: 'スペース3' }
+        ]}
+      ],
+      events: [
+      { id: '1', resourceId: 'b', start: '2019-11-25T09:00:00', end: '2019-11-25T16:00:00', title: 'セミナー①' },
+      { id: '2', resourceId: 'c', start: '2019-11-25T14:00:00', end: '2019-11-25T20:00:00', title: 'セミナー②' },
+      { id: '3', resourceId: 'e', start: '2019-11-25T13:00:00', end: '2019-11-25T15:00:00', title: '部内ミーティング' },
+      { id: '4', resourceId: 'f', start: '2019-11-25T09:30:00', end: '2019-11-25T11:30:00', title: '定例報告会議' },
+      { id: '5', resourceId: 'k2', start: '2019-11-25T10:30:00', end: '2019-11-25T12:30:00', title: '連絡会議' },
+      { id: '6', resourceId: 'e', start: '2019-11-27T09:00:00', end: '2019-11-27T16:00:00', title: 'セミナー①' },
+      { id: '7', resourceId: 'f', start: '2019-11-27T14:00:00', end: '2019-11-27T20:00:00', title: 'セミナー②' },
+      { id: '8', resourceId: 'a', start: '2019-11-27T13:00:00', end: '2019-11-27T15:00:00', title: '部内ミーティング' },
+      { id: '9', resourceId: 'b', start: '2019-11-27T09:30:00', end: '2019-11-27T11:30:00', title: '定例報告会議' },
+      { id: '10', resourceId: 'k1', start: '2019-11-27T10:30:00', end: '2019-11-27T12:30:00', title: '連絡会議' },
+      { id: '11', resourceId: 'e', start: '2019-11-28T09:00:00', end: '2019-11-28T16:00:00', title: 'セミナー①' },
+      { id: '12', resourceId: 'c', start: '2019-11-28T14:00:00', end: '2019-11-28T20:00:00', title: 'セミナー②' },
+      { id: '13', resourceId: 'd', start: '2019-11-28T13:00:00', end: '2019-11-28T15:00:00', title: '部内ミーティング' },
+      { id: '14', resourceId: 'f', start: '2019-11-29T09:30:00', end: '2019-11-29T11:30:00', title: '定例報告会議' },
+      { id: '15', resourceId: 'd', start: '2019-11-26T14:30:00', end: '2019-11-26T14:30:00', title: '連絡会議' },
+      { id: '16', resourceId: 'b', start: '2019-11-29T11:30:00', end: '2019-11-29T15:30:00', title: '定例報告会議' },
+      { id: '17', resourceId: 'k', start: '2019-11-26T12:30:00', end: '2019-11-26T15:30:00', title: '連絡会議' },
+      { id: '18', resourceId: 'k3', start: '2019-11-29T14:30:00', end: '2019-11-29T16:30:00', title: '連絡会議' }
+      ]
+    });
+
+    calendar.render();
+  });
+
+</script>
+<style>
+  @media screen and (min-width: 1025px) {
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 14px;
+      margin-bottom: 6px!important;
+    }
+
+    #calendar {
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+    .fc-head{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 86px;
+        z-index:10;
+        background-color:#e4e4e4;/*--背景色--*/
+    }
+  }
+
+
+  @media screen and (min-width: 481px) and (max-width: 1024px) {
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 22px;
+      margin-bottom: 6px!important;
+    }
+
+    #calendar {
+      width: 98%;
+      margin: 0px auto;
+    }
+    
+    .fc-event {
+        font-size:18px;/*--event title font size--*/
+        margin-bottom: 4px;/*--　帯の隙間 event clearance--*/
+    }
+    .fc-header-toolbar{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+        z-index:9;
+        background-color:white;
+    }
+    .fc-center h2{ /*-- 年月表示 --*/
+        margin-top:10px;
+    }
+    .fc-head{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 86px;
+        z-index:10;
+        background-color:#e4e4e4;/*--背景色--*/
+    }
+  }
+
+  
+  /*-- iPhone Vertical View--*/
+  @media screen and (max-width: 480px) {
+  
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    #calendar {
+      width: 98%;
+      margin: 0px auto;
+    }
+
+    .fc-event {
+        font-size:16px;/*--event title font size--*/
+        margin-bottom: 4px;/*--　帯の隙間 event clearance--*/
+    }
+    .fc-header-toolbar{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+        z-index:9;
+        background-color:white;
+    }
+    .fc-center h2{ /*-- 年月表示 --*/
+        margin-top:10px;
+    }
+    .fc-toolbar h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .fc-head{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 86px;
+        z-index:10;
+        background-color:#e4e4e4;/*--背景色--*/
+    }
+  }
+</style>
+</head>
+<body>
+  <div id='calendar'></div>
+</body>
+</html>
